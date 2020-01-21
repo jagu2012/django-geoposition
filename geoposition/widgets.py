@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import json
 
 from django import forms
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from .conf import settings
@@ -73,7 +72,7 @@ class GeopositionWidget(forms.MultiWidget):
         return context
 
     def decompress(self, value):
-        if isinstance(value, six.text_type):
+        if isinstance(value, str):
             return value.rsplit(',')
         if value:
             return [value.latitude, value.longitude]
